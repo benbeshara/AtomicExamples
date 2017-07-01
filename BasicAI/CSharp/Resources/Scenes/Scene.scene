@@ -5,9 +5,9 @@
 	<attribute name="Smoothing Constant" value="50" />
 	<attribute name="Snap Threshold" value="5" />
 	<attribute name="Elapsed Time" value="0" />
-	<attribute name="Next Replicated Node ID" value="400" />
-	<attribute name="Next Replicated Component ID" value="2041" />
-	<attribute name="Next Local Node ID" value="16779233" />
+	<attribute name="Next Replicated Node ID" value="401" />
+	<attribute name="Next Replicated Component ID" value="2044" />
+	<attribute name="Next Local Node ID" value="16779367" />
 	<attribute name="Next Local Component ID" value="16777216" />
 	<attribute name="Variables" />
 	<attribute name="Variable Names" value="" />
@@ -15,6 +15,10 @@
 	<component type="Octree" id="2" />
 	<component type="DebugRenderer" id="3">
 		<attribute name="Line Antialias" value="true" />
+	</component>
+	<component type="Navigable" id="2042" />
+	<component type="NavigationMesh" id="2043">
+		<attribute name="Draw NavAreas" value="true" />
 	</component>
 	<node id="366">
 		<attribute name="Is Enabled" value="true" />
@@ -48,7 +52,7 @@
 			<attribute name="Class" value="AICharacter" />
 			<attribute name="FieldValues">
 				<variant name="fov" type="String" value="120" />
-				<variant name="Path" type="String" value="Path01" />
+				<variant name="Path" type="String" value="" />
 				<variant name="isWandering" type="Bool" value="true" />
 				<variant name="isHostile" type="Bool" value="true" />
 			</attribute>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using AtomicEngine;
 using System.Reflection;
@@ -11,6 +11,7 @@ public class AICharacter : CSComponent
 
 		Node objectNode = this.GetNode();
 		AnimatedModel animatedModel;
+        navMesh = Scene.GetComponent<NavigationMesh>();
 
 		// Create the rendering component + animation controller
 		// Do we have a model already? If not, add the default
@@ -46,20 +47,19 @@ public class AICharacter : CSComponent
         objectNode.CreateComponent<Ragdoll>();
 
         //Do we have a path?
-        if (path != null)
+        if (Scene.GetChild(path) != null)
         {
             Node currPath = Scene.GetChild(path);
             //Start of the path
             currPoint = 0;
             Vector<Node> points = currPath.GetChildren();
-            currentPath = currPath.GetChild(0).WorldPosition;
+            Destination = currPath.GetChild(Convert.ToString(currPoint)).WorldPosition;
         }
         else if (isWandering == true)
         {
             //If not, Get a random position to wander to
             Random rnd = new Random();
-            Vector3 newLoc = new Vector3(rnd.Next(-5, 5) * (float)rnd.NextDouble(), 0, rnd.Next(-5, 5) * (float)rnd.NextDouble());
-            currentPath = Vector3.Add(objectNode.WorldPosition, newLoc);
+            Destination = new Vector3(rnd.Next(-5, 5) * (float)rnd.NextDouble(), 0, rnd.Next(-5, 5) * (float)rnd.NextDouble());
         }
         else
         {
@@ -120,7 +120,7 @@ public class AICharacter : CSComponent
                 {
                     if(Hit.Name == "Player"){
                         isChasing = true;
-                        currentPath = new Vector3(Hit.Position.X, 0, Hit.Position.Z);
+                        Destination = new Vector3(Hit.Position.X, 0, Hit.Position.Z);
 						Vector<Weapon> weapons = new Vector<Weapon>();
 						Node.GetDerivedCSComponents<Weapon>(weapons, true);
                         if (weapons.Count > 0)
@@ -226,56 +226,55 @@ public class AICharacter : CSComponent
 
 	void FollowPath(float timeStep)
 	{
-		if (currentPath != null)
-		{
-			Random rnd = new Random();
+        if(currentPath.Count > 0)
+        {
 			DebugRenderer dbgRend = Scene.GetComponent<DebugRenderer>();
-			dbgRend.AddCross(currentPath, 1.0f, Color.White, false);
+			dbgRend.AddCross(Destination, 1.0f, Color.White, false);
 
-			Vector3 nextWaypoint = currentPath; // NB: currentPath[0] is the next waypoint in order
+            Vector3 nextWaypoint = currentPath[0];
 
 			// Rotate Jack toward next waypoint to reach and move.
-            // Because we're gravity-bound, we only wnat to make sure we have a 2D psoition check.
-            // This is so the character isn't standing underneith a waypoint and stuck rotating.
-            Vector2 nodePosition2D = new Vector2(Node.Position.X, Node.Position.Z);
-            Vector2 waypointPosition2D = new Vector2(nextWaypoint.X, nextWaypoint.Z);
+			// Because we're gravity-bound, we only want to make sure we have a 2D position check.
+			// This is so the character isn't standing underneath a waypoint and stuck rotating.
+			Vector2 nodePosition2D = new Vector2(Node.Position.X, Node.Position.Z);
+			Vector2 waypointPosition2D = new Vector2(nextWaypoint.X, nextWaypoint.Z);
 			float distance = (nodePosition2D - waypointPosition2D).Length;
 
 			// Look at the next node
 			TurnToFace(timeStep, new Vector3(nextWaypoint.X, Node.WorldPosition.Y, nextWaypoint.Z));
 			// We don't know if they're using a Biped
-			if(Node.GetChild("Bip01_Head", true) != null)
+			if (Node.GetChild("Bip01_Head", true) != null)
 				Node.GetChild("Bip01_Head", true).LookAt(nextWaypoint, Vector3.UnitY, TransformSpace.TS_WORLD);
 
 			//Move the character toward it
-			this.moveDir = Vector3.Forward;
-            isMoving = true;
+			moveDir = Vector3.Forward;
+			isMoving = true;
 
             if (distance < 1.0f && !isChasing)
+                currentPath.RemoveAt(0);
+        } else {
+			if (Scene.GetChild(path) != null)
 			{
-                //Are we on a path?
-                if(path != null)
-                {
-					Node currPath = Scene.GetChild(path);
-					//Start of the path
-					Vector<Node> points = currPath.GetChildren();
-                    if(currPoint == (int)points.Size - 1)
-                    {
-                        currPoint = 0;
-                    }
-                    else
-                    {
-                        currPoint++;
-                    }
-                    currentPath = currPath.GetChild(Convert.ToString(currPoint)).WorldPosition;
-                }
-                else if(isWandering)
-                {
-					Vector3 newLoc = new Vector3(rnd.Next(-5, 5) * (float)rnd.NextDouble(), 0, rnd.Next(-5, 5) * (float)rnd.NextDouble());
-					currentPath = Vector3.Add(Node.WorldPosition, newLoc);
-                }
+				Node currPath = Scene.GetChild(path);
+				//Start of the path
+				Vector<Node> points = currPath.GetChildren();
+				if (currPoint == (int)points.Size - 1)
+				{
+					currPoint = 0;
+				}
+				else
+				{
+					currPoint++;
+				}
+				Destination = points[currPoint].WorldPosition;
 			}
-		}
+			else if (isWandering)
+			{
+                Random rnd = new Random();
+				Destination = new Vector3(rnd.Next(-5, 5) * (float)rnd.NextDouble(), 0, rnd.Next(-5, 5) * (float)rnd.NextDouble());
+			}
+            navMesh.FindPath(currentPath, Node.WorldPosition, Destination);
+        }
 	}
 
     float Check2DAngletoTarget(Node targetNode){
@@ -295,8 +294,9 @@ public class AICharacter : CSComponent
     int fireCount;
     bool isAlive;
     public Vector3 moveDir { get; set; }
-    Vector3 currentPath = new Vector3();
-
+    List<Vector3> currentPath = new List<Vector3>();
+    NavigationMesh navMesh;
+    Vector3 Destination;
     int currPoint;
 
     bool isMoving = false;
