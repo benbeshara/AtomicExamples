@@ -240,14 +240,27 @@ public class AICharacter : CSComponent
 			Vector2 waypointPosition2D = new Vector2(nextWaypoint.X, nextWaypoint.Z);
 			float distance = (nodePosition2D - waypointPosition2D).Length;
 
-			// Look at the next node
-			TurnToFace(timeStep, new Vector3(nextWaypoint.X, Node.WorldPosition.Y, nextWaypoint.Z));
-			// We don't know if they're using a Biped
-			if (Node.GetChild("Bip01_Head", true) != null)
-				Node.GetChild("Bip01_Head", true).LookAt(nextWaypoint, Vector3.UnitY, TransformSpace.TS_WORLD);
+            // Look at the next node
+            if (isChasing)
+            {
+				TurnToFace(timeStep, new Vector3(Scene.GetChild("Player").WorldPosition.X, Node.WorldPosition.Y, Scene.GetChild("Player").WorldPosition.Z));
+				// We don't know if they're using a Biped
+				if (Node.GetChild("Bip01_Head", true) != null)
+					Node.GetChild("Bip01_Head", true).LookAt(Scene.GetChild("Player").WorldPosition, Vector3.UnitY, TransformSpace.TS_WORLD);
 
+                moveDir = Scene.GetChild("Player").WorldPosition - Node.WorldPosition;
+            }
+            else
+            {
+                TurnToFace(timeStep, new Vector3(nextWaypoint.X, Node.WorldPosition.Y, nextWaypoint.Z));
+                // We don't know if they're using a Biped
+                if (Node.GetChild("Bip01_Head", true) != null)
+                    Node.GetChild("Bip01_Head", true).LookAt(nextWaypoint, Vector3.UnitY, TransformSpace.TS_WORLD);
+
+                moveDir = Vector3.Forward;
+            }
 			//Move the character toward it
-			moveDir = Vector3.Forward;
+			
 			isMoving = true;
 
             if (distance < 1.0f && !isChasing)
