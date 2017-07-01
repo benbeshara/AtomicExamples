@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<scene id="1">
+	<attribute name="Name" value="" />
+	<attribute name="Time Scale" value="1" />
+	<attribute name="Smoothing Constant" value="50" />
+	<attribute name="Snap Threshold" value="5" />
+	<attribute name="Elapsed Time" value="0" />
+	<attribute name="Next Replicated Node ID" value="400" />
+	<attribute name="Next Replicated Component ID" value="2041" />
+	<attribute name="Next Local Node ID" value="16779233" />
+	<attribute name="Next Local Component ID" value="16777216" />
+	<attribute name="Variables" />
+	<attribute name="Variable Names" value="" />
+	<component type="PhysicsWorld" id="1" />
+	<component type="Octree" id="2" />
+	<component type="DebugRenderer" id="3">
+		<attribute name="Line Antialias" value="true" />
+	</component>
+	<node id="366">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Plane" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="100 1 100" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="1980">
+			<attribute name="Model" value="Model;50c048dba42a435f53d95a9afddbc760.mdl" />
+			<attribute name="Material" value="Material;Models/Materials/Plane.material" />
+			<attribute name="Geometry Enabled">
+				<variant type="Bool" value="true" />
+			</attribute>
+		</component>
+		<component type="CollisionShape" id="1982">
+			<attribute name="Size" value="1 5.96046e-08 1" />
+		</component>
+		<component type="RigidBody" id="1990" />
+	</node>
+	<node id="368">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="AICharacter" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-3.52119 0 0" />
+		<attribute name="Rotation" value="0.99997 0 -0.00776811 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="CSComponent" id="1984">
+			<attribute name="Class" value="AICharacter" />
+			<attribute name="FieldValues">
+				<variant name="fov" type="String" value="120" />
+				<variant name="Path" type="String" value="Path01" />
+				<variant name="isWandering" type="Bool" value="true" />
+				<variant name="isHostile" type="Bool" value="true" />
+			</attribute>
+		</component>
+		<component type="AnimatedModel" id="1985">
+			<attribute name="Model" value="Model;1aa4af4ce69c2df474c1b3b16f695ca0.mdl" />
+			<attribute name="Material" value="Material;Models/Materials/Jack_Body.material;Models/Materials/Jack_Head.material" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Bone Animation Enabled">
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+			</attribute>
+			<attribute name="Animation States">
+				<variant type="Int" value="0" />
+			</attribute>
+		</component>
+		<component type="CSComponent" id="2040">
+			<attribute name="Class" value="WeaponCrateGun" />
+		</component>
+	</node>
+	<node id="369">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Player" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="1.15707 0 0" />
+		<attribute name="Rotation" value="0.808186 0 -0.588927 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="CSComponent" id="1986">
+			<attribute name="Class" value="Character" />
+		</component>
+		<component type="AnimatedModel" id="1987">
+			<attribute name="Model" value="Model;1aa4af4ce69c2df474c1b3b16f695ca0.mdl" />
+			<attribute name="Material" value="Material;Models/Materials/Jack_Body.material;Models/Materials/Jack_Head.material" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Bone Animation Enabled">
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+				<variant type="Bool" value="true" />
+			</attribute>
+			<attribute name="Animation States">
+				<variant type="Int" value="0" />
+			</attribute>
+		</component>
+	</node>
+	<node id="371">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Camera" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="0 1.23917 -1.38888" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Camera" id="1992" />
+	</node>
+	<node id="372">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Light" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="0 3.50389 0" />
+		<attribute name="Rotation" value="0.293334 0.947789 0.031426 0.121087" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Light" id="1993">
+			<attribute name="Light Type" value="Directional" />
+			<attribute name="Cast Shadows" value="true" />
+		</component>
+	</node>
+	<node id="374">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Box" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-0.97124 0.934811 -0.307589" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="0.140825 1.91868 2.46126" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="1996">
+			<attribute name="Model" value="Model;7860c44d227c7c428afb07f667928152.mdl" />
+			<attribute name="Material" value="Material;" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Geometry Enabled">
+				<variant type="Bool" value="true" />
+			</attribute>
+		</component>
+		<component type="CollisionShape" id="2006" />
+		<component type="RigidBody" id="2010">
+			<attribute name="Physics Position" value="-0.97124 0.934811 -0.307589" />
+		</component>
+	</node>
+	<node id="385">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Box" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-0.97124 0.934811 4.01032" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="0.140825 1.91868 2.46126" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="2014">
+			<attribute name="Model" value="Model;7860c44d227c7c428afb07f667928152.mdl" />
+			<attribute name="Material" value="Material;" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Geometry Enabled">
+				<variant type="Bool" value="true" />
+			</attribute>
+		</component>
+		<component type="CollisionShape" id="2015" />
+		<component type="RigidBody" id="2016">
+			<attribute name="Physics Position" value="-0.97124 0.934811 4.01032" />
+		</component>
+	</node>
+	<node id="389">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Box" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-5.7255 0.934811 -0.307589" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="0.140825 1.91868 2.46126" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="2026">
+			<attribute name="Model" value="Model;7860c44d227c7c428afb07f667928152.mdl" />
+			<attribute name="Material" value="Material;" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Geometry Enabled">
+				<variant type="Bool" value="true" />
+			</attribute>
+		</component>
+		<component type="CollisionShape" id="2027" />
+		<component type="RigidBody" id="2028">
+			<attribute name="Physics Position" value="-5.7255 0.934811 -0.307589" />
+		</component>
+	</node>
+	<node id="391">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Box" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-5.7255 0.934811 4.01032" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="0.140825 1.91868 2.46126" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="2032">
+			<attribute name="Model" value="Model;7860c44d227c7c428afb07f667928152.mdl" />
+			<attribute name="Material" value="Material;" />
+			<attribute name="Cast Shadows" value="true" />
+			<attribute name="Geometry Enabled">
+				<variant type="Bool" value="true" />
+			</attribute>
+		</component>
+		<component type="CollisionShape" id="2033" />
+		<component type="RigidBody" id="2034">
+			<attribute name="Physics Position" value="-5.7255 0.934811 4.01032" />
+		</component>
+	</node>
+	<node id="395">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Path01" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<node id="396">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="0" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-4.05446 0 -3.3273" />
+			<attribute name="Rotation" value="1 0 0 0" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+		</node>
+		<node id="398">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="1" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-4.05446 0 6.47357" />
+			<attribute name="Rotation" value="1 0 0 0" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+		</node>
+	</node>
+</scene>
